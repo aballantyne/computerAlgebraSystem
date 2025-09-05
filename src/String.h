@@ -7,8 +7,8 @@ class String {
 
         int length; // Not including \0
     public:
-        String(char* s);
-        String(char c);
+        String(const char* s);
+        String(const char c);
         String(const String& other);
         String();
         
@@ -21,6 +21,10 @@ class String {
         void append(char newChar);
 
         char operator[](int index) const {return data[index]; }
-
-        void print();
+        
+        void erase(int start, int end);
+        void erase(int index);
+        
+        String substr(int startIndex, int length); 
+        void print(bool waitForInput = false);
 };

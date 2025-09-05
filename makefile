@@ -2,7 +2,7 @@
 # Makefile Options
 # ----------------------------
 
-NAME = COMPALGE
+NAME = CASYS
 ICON = icon.png
 DESCRIPTION = "Computer Algebra System"
 COMPRESSED = NO

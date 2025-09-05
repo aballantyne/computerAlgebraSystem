@@ -15,13 +15,39 @@ void String::append(char newChar){
     length++;
 }
 
-void String::print(){
+void String::erase(int start, int end){
+    for(int i = end; i <= length; i++){
+        data[i-(end-start)] = data[i]; 
+    }
+}
+
+void String::erase(int index){
+    for(int i = index; i <= length; i++){
+        data[i-1] = data[i]; 
+    }
+}
+
+String String::substr(int startIndex, int subStrLength){
+    String output = String();
+
+    for (int i = 0; i < subStrLength; i++){
+        output += data[i + startIndex];
+    }
+    return output; 
+}
+
+void String::print(bool waitForInput)
+{
     os_ClrHome();
 
     os_PutStrFull(data);
+
+    if (waitForInput){
+        while (!os_GetCSC());
+    }
 }
 
-String::String(char *s){
+String::String(const char *s){
     length = 0; 
     data[0] = '\0';
 
