@@ -8,7 +8,7 @@ Expression::Expression()
     /* Clear the homescreen */
     os_ClrHome();
 
-    /* Print a string */
+    /* Print a String */
     os_PutStrFull("Hello, World.");
 
     /* Waits for a key */

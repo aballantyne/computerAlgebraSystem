@@ -1,9 +1,8 @@
 #include "CoreArithmetic.h"
-using namespace std;
-vector<string> operations = {
-    "+",
-    "-",
-    "/",
-    "*",
-    "^"
-};
+// const Vector<String> operations = {
+//     "+",
+//     "-",
+//     "/",
+//     "*",
+//     "^"
+// };

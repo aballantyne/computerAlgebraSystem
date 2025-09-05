@@ -1,16 +1,13 @@
 #pragma once
 #include <stdlib.h>
-#include <string>   
-#include <vector> // note to future andrew CE C++ doesnt have these libraries dont be lazy and create these (itll make it eaiser)   
-using namespace std;
 
-extern const vector<string> operations;
-extern const vector<string> functions;
+// extern const Vector<String> operations;
+// extern const Vector<String> functions;
 
-bool isFunction(string func);
-bool isOperator(string operator);
+// bool isFunction(String func);
+// bool isOperator(String op);
 
-int getPresendence(string operator);
+// int getPresendence(String op);
 
-float performOperation(string operation, float a, float b);
-float performFunction(string operation, float a);
+// float performOperation(String operation, float a, float b);
+// float performFunction(String operation, float a);
