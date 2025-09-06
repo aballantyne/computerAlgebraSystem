@@ -2,6 +2,7 @@
 #include <ti/screen.h>
 #include <ti/getcsc.h>
 #include <stdlib.h>
+
 void String::append(char newChar){
     if (length >= MAX_SIZE -1){
         os_ClrHome();
@@ -23,7 +24,20 @@ void String::insert(int index, char newChar){
     length++; 
 }
 
-void String::erase(int start, int end){
+bool String::operator==(const String &right) const{
+    if (right.getLength() != getLength()){
+        return false;
+    }
+    for(int i = 0; i < getLength(); i++){
+        if (data[i] != right[i]){
+            return false; 
+        }
+    }
+    return true;
+}
+
+void String::erase(int start, int end)
+{
     for(int i = end; i <= length; i++){
         data[i-(end-start)] = data[i]; 
     }
@@ -44,12 +58,14 @@ String String::substr(int startIndex, int subStrLength){
     return output; 
 }
 
-void String::print(bool waitForInput)
+void String::print(bool waitForInput,  bool newLine)
 {
-    os_ClrHome();
+    // os_ClrHome();
 
-    os_PutStrFull(data);
-
+    os_PutStrLine(data);
+    if (newLine){
+        os_NewLine();
+    }
     if (waitForInput){
         while (!os_GetCSC());
     }
@@ -75,7 +91,19 @@ String::String(const String &other){
         i++;
     }
 }
-String::String(){
+String& String::operator=(const String& right){
+    if (this != &right) {
+        length = 0;
+        data[0] = '\0';
+
+        for (int i = 0; i < right.length; i++) {
+            append(right.data[i]);
+        }
+    }
+    return *this; 
+}
+String::String()
+{
     length = 0; 
     data[0] = '\0';
 }
@@ -109,6 +137,42 @@ String& String::operator+=(const char &right)
 }
 String::String(char c)
 {
-    length = 0; 
-    append(c);
+    data[0] = c;
+    data[1] = '\0';
+    length = 1;
+}
+
+String::String(int i){
+    length = 0;
+    data[0] = '\0';
+
+    // Handle 0 explicitly
+    if (i == 0) {
+        append('0');
+        return;
+    }
+
+    // Handle negative numbers
+    bool negative = false;
+    if (i < 0) {
+        negative = true;
+        i = -i; // make positive for easier processing
+    }
+
+    // Convert number to digits in reverse
+    char buffer[MAX_SIZE];
+    int pos = 0;
+    while (i > 0) {
+        buffer[pos++] = '0' + (i % 10);
+        i /= 10;
+    }
+
+    if (negative) {
+        buffer[pos++] = '-';
+    }
+
+    // Append digits in correct order
+    for (int j = pos - 1; j >= 0; j--) {
+        append(buffer[j]);
+    }
 }

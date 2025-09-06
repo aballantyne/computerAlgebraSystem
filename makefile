@@ -9,7 +9,7 @@ COMPRESSED = NO
 
 CFLAGS = -Wall -Wextra -Oz
 CXXFLAGS = -Wall -Wextra -Oz
-
+HAS_PRINTF = NO
 # ----------------------------
 SRC = main.cpp
 include $(shell cedev-config --makefile)
