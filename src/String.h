@@ -19,7 +19,8 @@ class String {
         String& operator+=(const String& right);
         String& operator+=(const char& right);
         void append(char newChar);
-
+        void insert(int index, char newChar); 
+        
         char operator[](int index) const {return data[index]; }
         
         void erase(int start, int end);

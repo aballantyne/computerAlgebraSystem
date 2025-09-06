@@ -15,6 +15,14 @@ void String::append(char newChar){
     length++;
 }
 
+void String::insert(int index, char newChar){
+    for (int i = length; i >= index; i--){
+        data[i+1] = data[i]; 
+    }
+    data[index] = newChar; 
+    length++; 
+}
+
 void String::erase(int start, int end){
     for(int i = end; i <= length; i++){
         data[i-(end-start)] = data[i]; 

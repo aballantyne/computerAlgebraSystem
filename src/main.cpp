@@ -7,10 +7,12 @@ void stringDebug(){
     String s("Test the code");
 
     s.print(true);
+    s.insert(3, '?');
+    s.print(true);
 
     s += "!!";
     s.print(true);
-    s.erase(9,13); 
+    s.erase(10,14); 
 
     s.print(true);
     
@@ -22,6 +24,6 @@ void stringDebug(){
 }
 int main()
 {
-    
+    stringDebug(); 
     return 0;
 }
